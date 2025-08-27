@@ -1,0 +1,121 @@
+'''<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú - La Brasa Urbana</title>
+
+    <!-- Meta tags para PWA -->
+    <meta name="theme-color" content="#1a1a1a">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./IMAGE/LOGO.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-title-container">
+            <img src="./IMAGE/LOGO.png" alt="La Brasa Urbana Logo" class="header-logo">
+            <h1>La Brasa Urbana</h1>
+        </div>
+        <p>Una experiencia culinaria moderna</p>
+
+        <!-- Carrusel de Platos Destacados -->
+        <div class="featured-carousel">
+            <div class="swiper">
+                <div class="swiper-wrapper" id="featured-plates-wrapper">
+                    <!-- Las diapositivas se insertarán aquí con JavaScript -->
+                </div>
+                <!-- Si necesitas paginación -->
+                <div class="swiper-pagination"></div>
+                <!-- Si necesitas botones de navegación -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+        <!-- Barra de Búsqueda -->
+        <div class="search-wrapper">
+            <form id="search-form" class="search-form">
+                <input type="search" id="search-input" class="search-input" placeholder="Buscar un plato...">
+                <button type="submit" class="search-button">Buscar</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Contenedor principal para el menú generado dinámicamente -->
+    <main id="menu-container" class="menu-container">
+        <!-- Las categorías y platos se insertarán aquí con JavaScript -->
+    </main>
+
+    <!-- Modal para detalles del plato (inicialmente oculto) -->
+    <div id="plate-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button id="close-modal" class="close-button">&times;</button>
+            <img id="modal-img" src="" alt="Imagen del plato" class="modal-img">
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div class="modal-price-container">
+                <span class="price-label">Precio:</span>
+                <span id="modal-price" class="modal-price"></span>
+            </div>
+            
+            <!-- Sección de Upselling/Cross-selling -->
+            <div id="modal-suggestions-container" class="suggestions-container">
+                <h3>Te recomendamos acompañar con:</h3>
+                <ul id="modal-suggestions-list"></ul>
+            </div>
+
+            <!-- Opciones de personalización -->
+            <div class="customization-container">
+                <h3>Notas para la cocina</h3>
+                <textarea id="customization-notes" placeholder="Ej: Sin cebolla, término medio, etc."></textarea>
+            </div>
+
+            <button id="add-to-order" class="cta-button">Añadir a la Orden</button>
+        </div>
+    </div>
+
+    <!-- Barra de navegación inferior fija (Scrollspy) -->
+    <nav id="bottom-nav" class="bottom-nav">
+        <!-- Los enlaces de navegación de categorías se insertarán aquí con JavaScript -->
+    </nav>
+
+    <!-- Modal de la Orden -->
+    <div id="order-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button id="close-order-modal" class="close-button">&times;</button>
+            <h2>Mi Orden</h2>
+            <div id="order-items-container">
+                <!-- Los items de la orden se insertarán aquí -->
+            </div>
+            <div class="order-total-container">
+                <span>Total:</span>
+                <span id="order-total-price">0.00</span>
+            </div>
+            <div class="order-actions">
+                <button id="clear-order-btn" class="secondary-button">Limpiar Carrito</button>
+                <button id="confirm-order-btn" class="cta-button">Confirmar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="./menuData.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
+''

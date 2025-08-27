@@ -1,0 +1,632 @@
+/* --- Variables de Color y Tipografía --- */
+:root {
+    --color-primario: #D4AF37; /* Dorado/Mostaza para acentos */
+    --color-fondo: #1a1a1a; /* Negro casi puro para el fondo */
+    --color-superficie: #2c2c2c; /* Gris oscuro para tarjetas y modales */
+    --color-texto-principal: #f5f5f5; /* Blanco suave */
+    --color-texto-secundario: #a0a0a0; /* Gris claro para descripciones */
+    --fuente-principal: 'Montserrat', sans-serif;
+    --swiper-theme-color: var(--color-primario);
+    --swiper-navigation-size: 30px;
+}
+
+/* --- Reseteo Básico y Estilos Globales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    line-height: 1.6;
+}
+
+/* --- Encabezado --- */
+.main-header {
+    text-align: center;
+    padding: 25px 15px;
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0.95) 0%, var(--color-fondo) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-primario), transparent);
+    opacity: 0.5;
+}
+
+.header-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio reducido para móviles */
+}
+
+.header-logo {
+    height: 30px; /* Tamaño de logo reducido para móviles */
+    width: auto;
+}
+
+.main-header h1 {
+    font-size: 1.8rem; /* Tamaño de fuente reducido para móviles */
+    font-weight: 700;
+    color: var(--color-primario);
+}
+
+.main-header p {
+    font-size: 0.9rem; /* Lema más pequeño en móviles */
+    color: var(--color-texto-secundario);
+    margin-top: 5px;
+    margin-bottom: 20px; /* Espacio para la barra de búsqueda */
+}
+
+/* --- Carrusel --- */
+.featured-carousel {
+    max-width: 800px; /* Ancho máximo del carrusel */
+    margin: 0 auto 20px auto; /* Margen inferior para separarlo de la búsqueda */
+}
+
+.swiper {
+    width: 100%;
+    height: 200px; /* Altura del carrusel para móviles */
+    border-radius: 12px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: var(--color-superficie);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-slide .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: var(--color-primario);
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--color-primario);
+}
+
+/* --- Barra de Búsqueda --- */
+.search-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-form {
+    display: flex;
+    width: 100%;
+    background-color: var(--color-superficie);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-principal);
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--color-primario);
+}
+
+.search-button {
+    border: none;
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #b89a30;
+}
+
+
+/* --- Contenedor del Menú --- */
+.menu-container {
+    padding: 20px 15px 100px 15px; /* Espacio inferior para la barra de navegación */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-category {
+    margin-bottom: 40px;
+}
+
+.category-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-primario);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-superficie);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* --- Tarjeta de Plato --- */
+.plate-card {
+    background: linear-gradient(145deg, #3a3a3a, #2c2c2c);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease-in-out;
+}
+
+.plate-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.plate-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.plate-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.plate-info {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.plate-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.plate-description {
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+.plate-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    align-self: flex-end;
+}
+
+/* --- Barra de Navegación Inferior --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(44, 44, 44, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0;
+    z-index: 1000;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-texto-secundario);
+    text-decoration: none;
+    font-size: 0.65rem; /* Texto aún más pequeño para móviles */
+    font-weight: 600;
+    padding: 5px 6px; /* Padding horizontal reducido */
+    border-radius: 8px;
+    transition: color 0.3s ease;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    filter: grayscale(100%) brightness(1.5);
+    transition: filter 0.3s ease;
+}
+
+.nav-link.active .nav-icon {
+    filter: none; /* El icono activo muestra su color original */
+}
+
+.nav-link.active span {
+    color: var(--color-primario);
+}
+
+/* --- Modal --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: rgba(44, 44, 44, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 25px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slide-up 0.4s ease-out;
+}
+
+@keyframes slide-up {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--color-texto-principal);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+#modal-title {
+    font-size: 1.8rem;
+    color: var(--color-primario);
+    margin-bottom: 10px;
+}
+
+#modal-description {
+    font-size: 1rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 20px;
+}
+
+.modal-price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-fondo);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.price-label {
+    font-weight: 600;
+}
+
+.modal-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primario);
+}
+
+/* --- Sugerencias (Upselling) --- */
+.suggestions-container {
+    margin-bottom: 20px;
+}
+
+.suggestions-container h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--color-texto-principal);
+}
+
+#modal-suggestions-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#modal-suggestions-list li {
+    background-color: rgba(212, 175, 55, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+/* --- Personalización --- */
+.customization-container h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+#customization-notes {
+    width: 100%;
+    min-height: 80px;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-texto-secundario);
+    border-radius: 8px;
+    padding: 10px;
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-principal);
+    resize: vertical;
+}
+
+/* --- Botón CTA --- */
+.cta-button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 10px;
+}
+
+.cta-button:hover {
+    background-color: #b89a30; /* Dorado más oscuro */
+}
+
+.cta-button:active {
+    transform: scale(0.98); /* Efecto de presión */
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (min-width: 768px) {
+    .header-logo {
+        height: 50px; /* Logo más grande para pantallas mayores */
+    }
+
+    .main-header h1 {
+        font-size: 3.5rem; /* Título más grande para pantallas mayores */
+    }
+
+    .main-header p {
+        font-size: 1.1rem;
+    }
+
+    .swiper {
+        height: 250px; /* Altura del carrusel para pantallas mayores */
+    }
+
+    .menu-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (min-width: 1024px) {
+    .menu-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --- Estilos para el Modal de la Orden --- */
+#order-modal h2 {
+    color: var(--color-primario);
+    margin-bottom: 20px;
+}
+
+#order-items-container {
+    max-height: 300px; /* Altura máxima para scroll */
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 10px; /* Espacio para la barra de scroll */
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-fondo);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.order-item-details {
+    flex-grow: 1;
+}
+
+.order-item-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.order-item-notes {
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+    margin-top: 3px;
+}
+
+.order-item-price {
+    font-weight: 700;
+    color: var(--color-primario);
+    margin-left: 15px;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d; /* Rojo para eliminar */
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: color 0.2s ease;
+}
+
+.remove-item-btn:hover {
+    color: #cc0000;
+}
+
+.order-total-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-texto-secundario);
+    margin-top: 20px;
+}
+
+#order-total-price {
+    color: var(--color-primario);
+}
+
+/* --- Estilos para el botón de la Orden en la navegación --- */
+.nav-link.order-button {
+    position: relative;
+}
+
+.order-count-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4d4d; /* Rojo para el contador */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+    display: none; /* Oculto por defecto */
+}
+
+/* --- Estilos para el Botón Flotante de Orden --- */
+.floating-cart-button {
+    position: fixed;
+    bottom: 80px; /* Ajustado para no superponerse a la barra de navegación */
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-primario);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    z-index: 1001; /* Por encima de la barra de navegación */
+    transition: transform 0.3s ease;
+}
+
+.floating-cart-button:hover {
+    transform: scale(1.1);
+}
+
+.floating-cart-button .cart-icon {
+    font-size: 2rem;
+    color: var(--color-fondo);
+}
+
+.floating-cart-button .order-count-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: 2px solid var(--color-fondo);
+}
+
+.order-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.secondary-button {
+    background-color: var(--color-superficie);
+    color: var(--color-texto-principal);
+    border: 1px solid var(--color-primario);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.secondary-button:hover {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+}
