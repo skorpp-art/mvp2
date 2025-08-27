@@ -6,12 +6,12 @@ const urlsToCache = [
     './script.js',
     './menuData.js',
     './manifest.json',
-    './IMAGE/LOGO.png',
-    './IMAGE/ICONS/ACOMPAÑAMIENTOS.png',
-    './IMAGE/ICONS/BEBIDAS.png',
-    './IMAGE/ICONS/ENTRADAS.png',
-    './IMAGE/ICONS/POSTRE.png',
-    './IMAGE/ICONS/PRINCIPALES.png'
+    './image/logo.png',
+    './image/icons/ACOMPAÑAMIENTOS.png',
+    './image/icons/BEBIDAS.png',
+    './image/icons/ENTRADAS.png',
+    './image/icons/POSTRE.png',
+    './image/icons/PRINCIPALES.png'
 ];
 
 // Evento de Instalación: Se dispara cuando el SW se instala.

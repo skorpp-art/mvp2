@@ -112,7 +112,7 @@
         const iconName = categoria.toUpperCase();
         const iconFile = iconName === 'POSTRES' ? 'POSTRE' : iconName;
         navLink.innerHTML = `
-            <img src="IMAGE/ICONS/${iconFile}.png" alt="${categoria}" class="nav-icon">
+            <img src="image/icons/${iconFile}.png" alt="${categoria}" class="nav-icon">
             <span>${categoria}</span>
         `;
         bottomNav.appendChild(navLink);
@@ -150,7 +150,8 @@
         if (currentOrder.length === 0) {
             orderItemsContainer.innerHTML = '<p style="text-align: center; color: var(--color-texto-secundario);">Tu orden está vacía.</p>';
             if(clearOrderBtn) clearOrderBtn.style.display = 'none';
-        } else {
+        }
+        else {
             if(clearOrderBtn) clearOrderBtn.style.display = 'block';
             currentOrder.forEach(item => {
                 const itemDiv = document.createElement('div');
